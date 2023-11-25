@@ -17,13 +17,15 @@ import ProductoId from "./Components/Productos/ProductoId";
 import ProductosView from "./pages/ProductosView";
 import DesactiveUsers from "./Components/RolUsuarios/DesactiveUsers";
 import ResultsSearch from "./Components/RolUsuarios/ResultsSearch";
+import Bienvenida from "./pages/Bienvenida";
 const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
         <AuthProviderUsers>
           <Routes>
-            <Route path="/" element={<AuthLayouts />} />
+            <Route path="/" element={<Bienvenida />} />
+            <Route path="/Inicio" element={<AuthLayouts />} />
             <Route path="quienes-somos" element={<Description />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
