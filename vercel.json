@@ -1,12 +1,9 @@
 {
-    "version": 2,
-  
-    "builds": [{ "src": "./main.jsx", "use": "@vercel/node" }],
-  
+    "static": {
+      "directory": "public"
+    },
     "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "/"
-      }
+      { "src": "/[^.]+", "dest": "/", "status": 200 }
     ]
   }
+  
