@@ -1,5 +1,5 @@
-import FirstView from "../Components/FirstView";
-import Footer from "../Components/Footer";
+import FirstView from "../../Components/FirstView";
+import Footer from "../../Components/Footer";
 
 const PrincipalPage = () => {
   return (
