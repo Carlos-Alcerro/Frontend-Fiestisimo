@@ -1,1 +1,1 @@
-{ "routes": [{ "src": "[*.]+", "status": 200 }] }
+{ "routes": [{ "public":"/[^.]+","src": "/[^.]+","dest": "/", "status": 200 }] }
