@@ -1,5 +1,5 @@
 import Navbar from "../Components/Navbar";
-import PaginaUno from "../Components/PaginaUno";
+import PrincipalPage from "../pages/PrincipalPage";
 
 const AuthLayouts = () => {
   return (
@@ -8,7 +8,7 @@ const AuthLayouts = () => {
         <Navbar />
         <hr />
         <div className="container mx-10 mt-32">
-          <PaginaUno />
+          <PrincipalPage />
         </div>
       </main>
     </>
