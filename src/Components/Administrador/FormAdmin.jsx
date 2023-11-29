@@ -87,15 +87,15 @@ const FormAdmin = ({ editMode, prod, setCheck, check }) => {
         },
       };
 
-      const formData = new FormData();
+      /* const formData = new FormData();
       formData.append("name", name),
         formData.append("description", description);
       formData.append("price", price), formData.append("category", category);
-      formData.append("image", image);
+      formData.append("image", image); */
 
       const { data } = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/fiestisimo/products/`,
-        formData,
+        { name, description, price, category, image },
         config
       );
       console.log(data);
