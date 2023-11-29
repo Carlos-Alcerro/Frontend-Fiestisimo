@@ -133,8 +133,8 @@ const FormAdmin = ({ editMode, prod, setCheck, check }) => {
       return;
     }
 
-    setImage(file);
-    console.log(file);
+    setImage(file.name);
+    console.log(file.name);
   };
 
   const handleSubmit2 = async (e) => {
