@@ -57,6 +57,7 @@ const Login = () => {
         `${import.meta.env.VITE_BACKEND_URL}/fiestisimo/login/`,
         { email, password }
       );
+      console.log(`${import.meta.env.VITE_BACKEND_URL}/fiestisimo/login/`);
       setAlerta({});
       localStorage.setItem("token", data.token);
       setAuthAdm(data);

@@ -31,7 +31,7 @@ const FormAdmin = ({ editMode, prod, setCheck, check }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if ([name, description, category].includes("")) {
+    if ([name, description, category, price].includes("")) {
       setAlerta({
         msg: "Todos los campos son obligatorios",
         error: true,
@@ -64,14 +64,6 @@ const FormAdmin = ({ editMode, prod, setCheck, check }) => {
     if (!regexNumber.test(price.trim())) {
       setAlerta({
         msg: "El campo 'Precio' solo acepta numeros",
-        error: true,
-      });
-      return;
-    }
-
-    if (image === null) {
-      setAlerta({
-        msg: "El campo 'Imagen' esta vacio",
         error: true,
       });
       return;
