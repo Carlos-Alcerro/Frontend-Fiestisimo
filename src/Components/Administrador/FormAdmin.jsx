@@ -69,6 +69,14 @@ const FormAdmin = ({ editMode, prod, setCheck, check }) => {
       return;
     }
 
+    if (image === null) {
+      setAlerta({
+        msg: "El campo 'Imagen' esta vacio",
+        error: true,
+      });
+      return;
+    }
+
     try {
       const token = localStorage.getItem("token");
       if (!token) return;
