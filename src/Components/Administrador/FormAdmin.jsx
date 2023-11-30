@@ -69,14 +69,6 @@ const FormAdmin = ({ editMode, prod, setCheck, check }) => {
       return;
     }
 
-    if (image === null) {
-      setAlerta({
-        msg: "El campo 'Imagen' esta vacio",
-        error: true,
-      });
-      return;
-    }
-
     try {
       const token = localStorage.getItem("token");
       if (!token) return;
@@ -91,7 +83,10 @@ const FormAdmin = ({ editMode, prod, setCheck, check }) => {
       formData.append("name", name),
         formData.append("description", description);
       formData.append("price", price), formData.append("category", category);
-      formData.append("image", image);
+      if (image !== null) {
+        formData.append("image", image);
+      }
+      console.log("FORMDATA", formData);
 
       const { data } = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/fiestisimo/products/`,
@@ -115,26 +110,6 @@ const FormAdmin = ({ editMode, prod, setCheck, check }) => {
         error: true,
       });
     }
-  };
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    const fileType = file.type;
-    const validationImage = ["image/jpeg", "image/png"];
-
-    if (!validationImage.includes(fileType)) {
-      setAlerta({
-        msg: "El archivo seleccionado no es una imagen",
-        error: true,
-      });
-      setTimeout(() => {
-        setAlerta({});
-      }, 4000);
-      return;
-    }
-
-    setImage(file);
-    console.log(file);
   };
 
   const handleSubmit2 = async (e) => {
@@ -211,12 +186,27 @@ const FormAdmin = ({ editMode, prod, setCheck, check }) => {
     }
   };
 
+  const handleImage = (e) => {
+    const file = e.target.files[0];
+    setFileToBase(file);
+    console.log(file);
+  };
+
+  const setFileToBase = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+  };
+
   const { msg } = alerta;
 
   return (
     <form
       className="bg-white rounded-lg shadow-md p-4 w-auto"
       onSubmit={handleSubmit}
+      encType="multipart/form-data"
     >
       {msg && <Alerta alerta={alerta} />}
       <ToastContainer position="top-right" />
@@ -285,7 +275,7 @@ const FormAdmin = ({ editMode, prod, setCheck, check }) => {
             Imagen del producto
           </label>
           <input
-            onChange={handleImageChange}
+            onChange={handleImage}
             type="file"
             id="imagenProducto"
             accept=".jpeg, .jpg, .png"
